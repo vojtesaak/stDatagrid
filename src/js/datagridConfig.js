@@ -17,7 +17,7 @@ var StFormConfig = require('stform/src/stFormConfig');
 
 var responsiveBootstrapToolkit = require('responsive-bootstrap-toolkit');
 
-var Modal = require('stmodal');
+//var Modal = require('stmodal');
 
 var can = require('can');
 

@@ -1,11 +1,9 @@
 
+'use strict';
 
 
 var can = require('can');
 var stache = can.view.stache;
-
-
-
 var Person = require('./personModel');
 var DatagridConfig = require('../src/js/datagridConfig');
 

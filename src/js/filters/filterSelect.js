@@ -6,7 +6,7 @@
 
 var Filter = require('./filter');
 require('bootstrap-select-js');
-//require('vendor/ajax-bootstrap-select.min');
+
 var can = require('can');
 var Select = require('../utils/select');
 

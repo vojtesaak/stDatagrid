@@ -5,7 +5,7 @@
 'use strict';
 
 var Col = require('./col');
-var Modal = require('stmodal');
+//var Modal = require('stmodal');
 
 var ColBaseText = Col.extend({}, {
 
