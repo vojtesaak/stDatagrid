@@ -19,9 +19,9 @@
     "handlebars": "^3.0.3",
     "lodash": "^3.10.1",
     "responsive-bootstrap-toolkit": "git://github.com/Storyous/responsive-bootstrap-toolkit.git",
-    "stform": "1.0.0",
-    "stmodal": "1.0.0",
-    "stloader": "1.0.0"
+    "stform": "git://github.com/vojtesaak/stForm.git#master",
+    "stmodal": "git://github.com/vojtesaak/stModal.git#master",
+    "stloader": "git://github.com/vojtesaak/stLoader.git#master"
   },
   "devDependencies": {
     "http-server": "^0.9.0",
