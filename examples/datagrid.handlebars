@@ -1,0 +1,44 @@
+<datagrid config="{config}" heading="Datagrid Component">
+    <config>
+
+        <action data-title="Synchronize with Fakturoid" data-callback="refresh" data-name="refresh-button"></action>
+        <action data-title="Generate missing invoices" data-callback="generateMissing" data-name="generateMissing-button"></action>
+
+        <no-rows>
+            <message>There is no Person yet.</message>
+        </no-rows>
+
+        <no-filtered-rows>
+            <message>No Person fits for the filters.</message>
+            <button-text>Show all Persons</button-text>
+        </no-filtered-rows>
+
+        <filters>
+            <filter data-type="Select"
+                    data-placeholder="All merchants"
+                    data-name="merchantId"></filter>
+            <filter data-type="Select"
+                    data-placeholder="State"
+                    data-name="state">
+                <static-option value="1">issued</static-option>
+                <static-option value="2">after due</static-option>
+                <static-option value="3">paid</static-option>
+                <static-option value="4">canceled</static-option>
+            </filter>
+        </filters>
+
+        <columns>
+            <column data-type="Date" data-name="issuedOn" data-title="Issued on" data-order="desc" data-always-visible="true"></column>
+            <column data-type="Enum" data-name="merchantId" data-title="Merchant" data-always-visible="true"></column>
+            <column data-type="Enum" data-name="state" data-title="State" data-always-visible="true">
+                <static-option value="1">issued</static-option>
+                <static-option value="2">after due</static-option>
+                <static-option value="3">paid</static-option>
+                <static-option value="4">canceled</static-option>
+            </column>
+            <column data-type="Text" data-name="yearMonth" data-title="YearMonth" data-always-visible="true"></column>
+            <column data-type="Text" data-name="externalId" data-title="Fakturoid" data-link="[externalLink]" target="_blank"></column>
+        </columns>
+
+    </config>
+</datagrid>
