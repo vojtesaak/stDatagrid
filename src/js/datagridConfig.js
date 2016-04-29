@@ -11,13 +11,14 @@ var OrderConfig = require('./datagridOrderConfig');
 var DatagridFiltersConfig = require('./datagridFiltersConfig');
 var datagridDefaults = require('./datagridDefaults');
 var DatagridAction = require('./datagridAction');
-var StFormConfig = require('stform/src/stFormConfig');
+var StFormConfig = require('stform/src/js/stFormConfig');
 
 
 
 var responsiveBootstrapToolkit = require('responsive-bootstrap-toolkit');
 
-//var Modal = require('stmodal');
+var Modal = require('stmodal');
+
 
 var can = require('can');
 
@@ -25,6 +26,9 @@ var DatagridConfig = can.Map.extend({
     // static
 
 }, {
+
+    modalTemplatePath: '/node_modules/stmodal/src/templates/',
+
     // instance
     configuration: null,
 
@@ -147,10 +151,11 @@ var DatagridConfig = can.Map.extend({
         this.attr('groupData', new can.Map());
 
 
-        this.initialized.promise().then(function(columns) {
-            self.attr('orderConfig', new OrderConfig(self.viewState, columns, self.orderMultiple));
-            self.callAction('getData');
-        });
+        this.initialized.promise()
+            .then(function(columns) {
+                self.attr('orderConfig', new OrderConfig(self.viewState, columns, self.orderMultiple));
+                self.callAction('getData');
+            });
 
         this.attr('actions', new can.Map());
         this.attr('namedActions', new can.Map());
@@ -159,14 +164,16 @@ var DatagridConfig = can.Map.extend({
             if (attr === 'route' && what === 'set') {
                 return;
             }
-            self.initialized.promise().then(function () {
-                self.callAction('getData');
-            });
+            self.initialized.promise()
+                .then(function () {
+                    self.callAction('getData');
+                });
         };
 
-        this.initialized.promise().then(function () {
-            self.viewState.bind('change', self._viewStateChangeHandler);
-        });
+        this.initialized.promise()
+            .then(function () {
+                self.viewState.bind('change', self._viewStateChangeHandler);
+            });
 
         this._viewStateChangingHandler = function (event) {
 
@@ -180,13 +187,14 @@ var DatagridConfig = can.Map.extend({
                 var path = can.route.param(can.route.data.serialize(), true);
                 can.route._call('setURL', path, []);
 
-                self.showPrompt('Really ?').then(function(yes) {
-                    if(yes) {
-                        event.resume();
-                    } else {
-                        event.cancel();
-                    }
-                });
+                self.showPrompt('Really ?')
+                    .then(function(yes) {
+                        if(yes) {
+                            event.resume();
+                        } else {
+                            event.cancel();
+                        }
+                    });
 
             }
 
@@ -238,7 +246,6 @@ var DatagridConfig = can.Map.extend({
      * @returns {*|Promise}
      */
     callAction: function(action, parameters) {
-
         var self = this;
 
         if (typeof action === 'object') {
@@ -407,6 +414,7 @@ var DatagridConfig = can.Map.extend({
      * @private
      */
     processControlDocumentFragment: function (fragment) {
+
         var configObject = HtmlParser.parse(fragment, ['custom-area']);
 
         this.attr('orderMultiple', configObject.config.columns.hasAttr('order-multiple'));
@@ -678,6 +686,7 @@ var DatagridConfig = can.Map.extend({
      */
 
     showForm: function (entityToEdit, $rowElement) {
+
         var self = this;
         var deferred = new can.Deferred();
 
@@ -698,7 +707,6 @@ var DatagridConfig = can.Map.extend({
         };
 
         if (this.formConfig) {
-
             if (entityToEdit === this.formConfig.entity) {
                 this.hideForm();
                 deferred.resolve(false);
@@ -821,14 +829,14 @@ var DatagridConfig = can.Map.extend({
     },
 
     showModal: function(message) {
-        var modal = new Modal('components/modalMessage', {
+        var modal = new Modal( this.modalTemplatePath + 'modalMessage', {
             message: message
         });
         return modal.open();
     },
 
     showPrompt: function(message) {
-        var modal = new Modal('components/modalPrompt', {
+        var modal = new Modal( this.modalTemplatePath +  'modalPrompt', {
             message: message
         });
         return modal.open();

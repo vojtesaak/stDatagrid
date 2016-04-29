@@ -2,12 +2,13 @@
  * Created by Václav Oborník on 15/09/15.
  */
 'use strict';
-
+var can = require('can');
 var PartialModel = require('../src/js/utils/partialModel');
 require('can/construct/super');
 
 var Person = PartialModel.extend({
-    id: 'invoiceId',
+
+    id: 'personId',
 
     resource: '/api/persons',
 
@@ -18,6 +19,7 @@ var Person = PartialModel.extend({
 }, {
     init: function () {
         PartialModel.prototype.init.apply(this, arguments);
+        this.attr('groups', this.groups || new can.List());
     }
 });
 

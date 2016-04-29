@@ -3,8 +3,8 @@
  */
 'use strict';
 
-var ColBaseText = require('./colBaseText');
 var can = require('can');
+var ColBaseText = require('./colBaseText');
 var EntityTranslator = require('../utils/entityTranslator');
 
 var ColEnum = ColBaseText.extend({}, {

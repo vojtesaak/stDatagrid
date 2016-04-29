@@ -1,6 +1,7 @@
 /**
  * Created by lukas on 15.7.15.
  */
+
 'use strict';
 
 var datagridDefaults = {

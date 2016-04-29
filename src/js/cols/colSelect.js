@@ -4,8 +4,6 @@
     'use strict';
 
     var can = require('can');
-
-
     var ColInput = require('./colInput');
 
     var ColSelect = ColInput.extend({}, {

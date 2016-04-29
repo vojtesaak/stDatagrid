@@ -5,9 +5,11 @@
 'use strict';
 
 var can = require('can');
+var size = require('lodash/collection/size');
+
 require('can/map/delegate');
 require('can/construct/super');
-var size = require('lodash/collection/size');
+
 
 var PartialModel = can.Model.extend({
 

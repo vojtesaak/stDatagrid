@@ -5,8 +5,14 @@
 'use strict';
 
 var can = require('can');
+
+require('./datagridPagination');
+require('./datagridFilters');
 require('./datagridTable');
-//require('stform');
+
+require('stform/src/js/stForm');
+
+
 
 can.Component.extend({
 
@@ -15,7 +21,6 @@ can.Component.extend({
     title: 'DG',
 
     template: function (data, options) {
-
 
         // fetch a subtemplate content from datagrid tag
         var fragment = document.createDocumentFragment();
@@ -68,7 +73,6 @@ can.Component.extend({
         html += '</div>{{/if}}';
 
         html += '</div>';
-
 
         return can.stache(html)(data, options);
     },

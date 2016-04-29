@@ -1,35 +1,53 @@
 
 'use strict';
 
+require('responsive-bootstrap-toolkit').init('development');
+
+require('./personFixtures');
+require('../src/js/datagrid');
+require('../src/less/main.less!');
 
 var can = require('can');
-var stache = can.view.stache;
+var stache = require('can/view/stache');
 var Person = require('./personModel');
 var DatagridConfig = require('../src/js/datagridConfig');
+//var Modal = require('stmodal');
 
-require('bootstrap/less/bootstrap.less!');
-require('../src/less/datagrid.less!');
+var  getTemplate = function (templateName) {
 
+
+    return function(data, helpers) {
+
+        var template = can.view({
+            url: templateName,
+            engine: 'stache'
+        });
+
+        if (typeof template === 'undefined') {
+            window.reloadAlert(2);
+            return can.view(can.view.stache('templateNotFound', 'Template not loaded'))();
+        } else {
+            return template(data, helpers);
+        }
+    };
+};
 
 module.exports = can.Component({
 
     tag: 'my-component',
 
-    template: function (data, options) {
-
-        var template = can.view({
-            url: 'datagrid.handlebars'
-        });
-
-        var tpl = $('<div>').append(template(data, options)).html();
-        return stache(tpl)(data, options);
-    },
+    template: getTemplate('datagrid.handlebars'),
 
     viewModel: {
 
         config: null,
 
+        personGroups: null,
+
         init: function() {
+
+            var self = this;
+            this.attr('personGroups', new can.Model.List());
 
             var datagridConfig = new DatagridConfig({
 
@@ -37,32 +55,19 @@ module.exports = can.Component({
 
                 viewState: can.route,
 
-                allowInsert: false,
+               // allowInsert: false,
 
-                initCallback: function () {
-
+                areaModels: {
+                    'personGroupsArea': self
                 },
 
-                refreshCallback: function () {
+                initCallback: function () {
+                   /* this.filter('merchantId')
+                        .setOptions(Merchant, {fields: 'company', limit: 5});**/
+                    this.filter('favoriteLang')
+                        .setOptions(Person, { fields: 'favoriteLang' });
 
-                    var buttonField = datagridConfig.action('refresh-button');
-                    buttonField.attr('spinning', true);
 
-                    can.ajax({
-                        url: '/api/invoices/refresh',
-                        method: 'post',
-                        success: function() {
-                            datagridConfig.callAction('getData');
-                        },
-                        error: function (jqXHR, textStatus) {
-                            var modal = new Modal('components/modalMessage', {
-                                message: 'Something went wrong: ' + textStatus
-                            });
-                            modal.open();
-                        }
-                    }).always(function () {
-                        buttonField.attr('spinning', false);
-                    });
                 }
 
             }, this);

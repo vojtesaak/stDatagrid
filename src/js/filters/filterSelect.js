@@ -5,7 +5,10 @@
 'use strict';
 
 var Filter = require('./filter');
+
+require('bootstrap-js/dropdown');
 require('bootstrap-select-js');
+//require('bootstrap-select-less/bootstrap-select.less!');
 
 var can = require('can');
 var Select = require('../utils/select');

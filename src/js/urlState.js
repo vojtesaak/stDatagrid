@@ -1,8 +1,9 @@
 /**
  * Created by lukas on 1.7.15.
  */
-'use strict'
+'use strict';
 var can = require('can');
+
 var UrlState = {
     getValue: function(state, defaultState) {
         var encodedState = can.route.attr(state);

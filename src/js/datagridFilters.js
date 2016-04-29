@@ -12,7 +12,7 @@ can.Component.extend({
         if (!can.isEmptyObject(filters.attr())) { //There are some filters to render
             var html = '<div class="datagrid-filters">';
             filters.each(function(filter){
-                html += '   <div class="form-group filter-'+filter.name+'" data-filter-type="' + filter.type + '">' + filter.getLabelTemplate() + filter.getTemplate();
+                html += '<div class="form-group filter-'+filter.name+'" data-filter-type="' + filter.type + '">' + filter.getLabelTemplate() + filter.getTemplate();
                 if (filter.name === 'search') {
                     html += '<button class="icon-search search-input-toggle"></button>';
                 }

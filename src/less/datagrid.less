@@ -1,3 +1,5 @@
+
+
 @datagrid-row-height:           50px;
 @datagrid-header-height:        @datagrid-row-height;
 @datagrid-row-padding-v:        (@datagrid-row-height) / 2;
@@ -13,7 +15,17 @@
 @datagrid-border:               @datagrid-border-style @datagrid-border-color;
 @datagrid-input-border:         @datagrid-border-style @datagrid-input-border-color;
 
+@spacing-small:                 5px;
+@textGray:                      #555;
+@white:                         #fff;
+
 @transitionSpeed: 0.6s;
+
+.icon-select-position() {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
 
 
 @media (max-width: @screen-sm-max) {
@@ -68,7 +80,7 @@ datagrid {
     .datagrid-filters {
         position: relative;
         height: 50px;
-        border-bottom: 1px solid @lightGray;
+        border-bottom: 1px solid @datagrid-border-color;
         padding: 0 @spacing-small;
 
         .form-group {
@@ -92,8 +104,8 @@ datagrid {
                         box-shadow: none;
                         font-size: 12px;
                         line-height: 20px;
-                        padding: 1px 27px 1px @spacing-tiny;
-                        color: @trimGray;
+                        //padding: 1px 27px 1px @spacing-tiny;
+                       // color: @trimGray;
 
                         &:active,
                         &:focus,
@@ -102,15 +114,14 @@ datagrid {
                         }
                     }
                     &.open .dropdown-toggle {
-                        background-color: @trimGray;
+                        //background-color: @trimGray;
                         color: @white;
                     }
                     > .dropdown-menu {
                         border-radius: 0;
                         overflow: visible !important;
                         border: @datagrid-input-border;
-                        background-color: @lightGray;
-                        .dialog-shadow;
+                        //background-color: @lightGray;;
                         padding: 0;
                         margin: 20px 0 0;
 
@@ -129,7 +140,7 @@ datagrid {
                         &:after {
                             margin: 0 1px;
                             border-width: 14px;
-                            border-bottom-color: @lightGray;
+                            //border-bottom-color: @lightGray;
                         }
 
                         .bs-searchbox { padding: 10px; }
@@ -153,21 +164,15 @@ datagrid {
 
                                 a {
                                     padding: 5px 10px;
-                                    line-height: @icon-size-tiny;
+                                   // line-height: @icon-size-tiny;
                                     .clearfix();
                                 }
-
-                               /* .icon-select-position() {
-                                    position: absolute;
-                                    right: 10px;
-                                    top: 12px;
-                                }*/
 
                                 span.glyphicon {
                                     display:none;
                                     //.icon-select-position();
                                     font-size: 9px;
-                                    color:@textLightGray;
+                                    //color:@textLightGray;
 
                                    /* &:before {
                                         .icon-checkmark-thick();
@@ -181,20 +186,20 @@ datagrid {
 
                                 &.dropdown-header {
                                     padding: 0 10px 5px;
-                                    background-color: @lightGray;
+                                    //background-color: @lightGray;
                                     border-top: 0;
                                 }
                                 &.selected {
-                                    background-color: @lightGray;
+                                    //background-color: @lightGray;
                                     border: 0;
 
                                     a {
                                         padding-left: 25px;
 
                                         &:before {
-                                            color:@textLightGray;
-                                           // .icon-select-position();
-                                           // .icon-cross-thick();
+                                            //color:@textLightGray;
+                                            .icon-select-position();
+                                            .icon-cross-thick();
                                             font-size: 9px;
                                             display: block;
                                         }
@@ -241,8 +246,8 @@ datagrid {
 
                         &:before {
                             line-height: 20px;
-                            color: @text-color-default;
-                            .opacity(0.4);
+                            //color: @text-color-default;
+                           .opacity(0.4);
                         }
                     }
 
@@ -262,15 +267,14 @@ datagrid {
                         z-index: 10;
                         cursor: pointer;
                         vertical-align: middle;
-                        margin-right: -6px;
                     }
 
                     input {
                         display: none;
                         .overlay(10);
                         line-height: @datagrid-row-height;
-                        font-size: @text-big;
-                        background-color: @lightGray;
+                        //font-size: @text-big;
+                        //background-color: @lightGray;
                         border: 0 !important;
                         border-radius: 0;
                         padding: 0 @spacing-small;
@@ -300,10 +304,10 @@ datagrid {
                         vertical-align: middle;
                         border-radius: 4px;
                         border: @datagrid-input-border;
-                        font-size: @text-tiny;
+                        //font-size: @text-tiny;
                         line-height: 20px;
-                        padding: 1px 27px 1px @spacing-tiny;
-                        color: @trimGray;
+                        //padding: 1px 27px 1px @spacing-tiny;
+                       // color: @trimGray;
                         margin-right: 10px;
                         background-color: @gray;
 
@@ -324,7 +328,7 @@ datagrid {
         padding: 0 (@datagrid-row-padding-h - 6px);
     }
     .datagrid-table {
-        font-size: @text-tiny;
+        //font-size: @text-tiny;
         //line-height: @icon-size-tiny;
         width:100%;
 
@@ -338,7 +342,7 @@ datagrid {
 
                 cursor: pointer;
                 &.checked {
-                  //  .icon-checkmark();
+                    .icon-checkmark();
                     border: @datagrid-input-border;
                 }
             }
@@ -353,14 +357,14 @@ datagrid {
                     &:first-child { padding-left: @datagrid-row-padding-h; }
                     &:last-child { padding-right: @datagrid-row-padding-h; }
 
-                    a { .link(@textLightGray); }
+                    //a { .link(@textLightGray); }
                 }
             }
             tbody tr {
                 border-bottom: @datagrid-border;
 
-                &:hover td { background-color: @lightGray; }
-                &.active td { background-color: @selectedGray; }
+                //&:hover td { background-color: @lightGray; }
+                //&.active td { background-color: @selectedGray; }
 
                 td {
                     padding: @datagrid-row-padding-v 20px;
@@ -408,7 +412,7 @@ datagrid {
 
                         .input-wrap {
                             .position(0, 0);
-                            .full-size;
+                            .square(100%);
                             padding: @datagrid-row-padding-v 5px;
                         }
 
@@ -420,7 +424,7 @@ datagrid {
                             width: 100%;
                             text-align: left;
                             font-weight: normal;
-                            font-size: @text-tiny;
+                           // font-size: @text-tiny;
                         }
                     }
 
@@ -458,7 +462,7 @@ datagrid {
                             }
 
                             &:hover:after {
-                                color: @red;
+                                //color: @red;
                             }
                         }
                     }
@@ -561,7 +565,7 @@ datagrid {
         }
 
         .edit-form-window {
-            .stretch();
+            //.stretch();
             position: fixed;
             right:0;
             width: 100%;
@@ -580,7 +584,7 @@ datagrid {
 */
         .icon-cross {
             font-size: 20px;
-            color: @text-color-default;
+           // color: @text-color-default;
             vertical-align: middle;
         }
     }
@@ -604,14 +608,14 @@ datagrid {
 
     .form-title {
         font-size: 1.4em;
-        margin: 0 0 0 -@spacing-great / 2;
+        //margin: 0 0 0 -@spacing-great / 2;
     }
 
     .form-container {
-        .stretch;
+        .stretch();
         bottom: 70px;
-        padding: @spacing-bigger @spacing-great;
-        font-size: @text-small;
+        //padding: @spacing-bigger @spacing-great;
+       // font-size: @text-small;
         overflow-y: auto;
 
         .form-content {
@@ -624,27 +628,27 @@ datagrid {
         }
 
         fieldset {
-            margin-top: @spacing-bigger;
+          //  margin-top: @spacing-bigger;
             &:first-of-type { margin-top: 0; }
 
             > legend {
-                margin: @spacing-bigger 0 0 -@spacing-great / 2;
+               // margin: @spacing-bigger 0 0 -@spacing-great / 2;
                 border: 0;
                 font-weight: normal;
-                font-size: @text-normal;
+                //font-size: @text-normal;
             }
         }
         .form-group {
-            margin: @spacing-bigger 0 0;
+            //margin: @spacing-bigger 0 0;
 
             input[type='text'],
             input[type='password'] {
                 border-radius: 0;
                 border: @datagrid-input-border;
-                background-color: @lightGray;
-                font-size: @text-tiny;
-                color: @textLightGray;
-                .animate(':focus', background-color, @white, color, @textGray);
+              //  background-color: @lightGray;
+               // font-size: @text-tiny;
+               // color: @textLightGray;
+               .animate(':focus', background-color, @white, color, @textGray);
             }
 
             input[type='checkbox'] {
@@ -661,24 +665,24 @@ datagrid {
                         .square(34px);
                         vertical-align: middle;
                         border: @datagrid-input-border;
-                        background-color: @lightGray;
+                       // background-color: @lightGray;
                         background-clip: content-box;
                         background-origin: content-box;
-                        margin-right: @spacing-small;
+                      //  margin-right: @spacing-small;
                     }
 
                     & + label {
-                        margin-top: @spacing-small;
+                       // margin-top: @spacing-small;
                     }
                 }
                 &:checked + label:before {
-                    //.icon-checkmark();
+                    .icon-checkmark();
                     .square(34px);
                     border: @datagrid-input-border;
                     line-height: 34px;
                     text-align: center;
                     background-color: @white;
-                    color:@textLightGray;
+                   // color:@textLightGray;
                     font-size:18px;
                 }
             }
@@ -687,12 +691,12 @@ datagrid {
                     .dropdown-toggle {
 
                         & {
-                            font-size: @text-tiny;
+                        //    font-size: @text-tiny;
                             position: relative;
                             box-shadow: none !important;
                             height: 34px;
-                            background-color: @lightGray;
-                            color: @textLightGray;
+                        //    background-color: @lightGray;
+                       //     color: @textLightGray;
                             border: @datagrid-input-border;
                         }
 
@@ -705,20 +709,20 @@ datagrid {
                         }
                     }
                     .dropdown-menu {
-                        font-size: @text-tiny;
+                       // font-size: @text-tiny;
                         bottom: auto;
                     }
 
                     > .dropdown-menu {
                         top: 0;
-                        background-color: @lightGray;
+                      //  background-color: @lightGray;
                         overflow: visible !important;
                         padding: 0;
-                        margin: 0 0 @spacing-bigger;
+                      //  margin: 0 0 @spacing-bigger;
                         border-radius: 0;
-                        border: @datagrid-input-border;
-                        border-top-width: 34px;
-                        border-top-color: Transparent;
+                        //border: @datagrid-input-border;
+                        //border-top-width: 34px;
+                        //border-top-color: Transparent;
                         box-shadow: rgba(0, 0, 0, 0.08) 0 0 5px;
 
                         &:after {
@@ -757,7 +761,7 @@ datagrid {
 
                             &.selected {
                                 background-color: inherit;
-                                a { padding-left: @spacing-big; }
+                          //      a { padding-left: @spacing-big; }
                             }
 
                             &.divider {
@@ -807,9 +811,9 @@ datagrid {
         background-color: #fff;
         border-top: @datagrid-border;
         height: 70px;
-        //.stretch;
+        .stretch();
         top: auto;
-        padding: @spacing-medium;
+        //padding: @spacing-medium;
         z-index: 5;
 
         button {
@@ -836,7 +840,7 @@ datagrid {
     .datagrid {
         width: 100%;
         .transition(all @transitionSpeed);
-        // -webkit-transform:translateZ(0);
+         -webkit-transform:translateZ(0);
     }
 
     &.collapsed {
@@ -845,7 +849,7 @@ datagrid {
             position: relative;
             .datagrid-table table tr td.userchange:hover span {
                 border: 0;
-                .no-spacing;
+        //        .no-spacing;
                 background: inherit;
             }
 
@@ -870,7 +874,6 @@ datagrid {
 
     &.embedded {
         height: auto;
-        min-height: auto;
     }
 
     @media (min-width: @screen-md-min) {
@@ -914,7 +917,7 @@ datagrid {
             &:hover {
                 &:after,
                 &:before {
-                    background-color: darken(@darkRed, 5%);
+            //        background-color: darken(@darkRed, 5%);
                 }
             }
 
@@ -925,7 +928,7 @@ datagrid {
                 content:'';
                 display: block;
                 position: absolute;
-                background-color: @darkRed;
+             //   background-color: @darkRed;
                 left: -1px;
                 right: -1px;
                 height: 0px;

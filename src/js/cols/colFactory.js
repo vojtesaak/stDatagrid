@@ -3,6 +3,7 @@
  */
 
 'use strict';
+
 var Col = require('./col');
 var ColInput = require('./colInput');
 var ColText = require('./colText');

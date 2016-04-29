@@ -391,6 +391,14 @@ var Select = can.Map.extend({}, {
         var self = this;
         var options = self._getSelectedOptions();
 
+        if ( typeof data === 'string') {
+            try {
+                data = JSON.parse(data);
+            } catch(err) {
+                //err
+            }
+        }
+
         data.data.forEach(function (item) {
             var itemToPush;
 
